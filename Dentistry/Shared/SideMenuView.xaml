@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dentistry.Shared.SideMenuView"
+             Title="SideMenuView">
+
+    <Grid BackgroundColor="#172554">
+        <VerticalStackLayout Spacing="0">
+            <!-- Tiêu đề -->
+            <Grid HeightRequest="80" BackgroundColor="#0F1C3F">
+                <Label Text="TodoListBlazorWasm" 
+                       TextColor="White" 
+                       FontSize="20" 
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       Margin="20,0" />
+            </Grid>
+
+            <!-- Thông tin người dùng -->
+            <HorizontalStackLayout Padding="20,10" HorizontalOptions="FillAndExpand">
+                <Label Text="Hello, admin" TextColor="White" FontSize="16" />
+            </HorizontalStackLayout>
+
+            <!-- Menu items -->
+            <VerticalStackLayout Spacing="0">
+                <!-- Home -->
+                <Grid HeightRequest="50" Padding="20,0" x:Name="HomeMenu">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="home.png" HeightRequest="24" WidthRequest="24" 
+                           VerticalOptions="Center" />
+
+                    <Label Grid.Column="1" Text="Home" TextColor="White" 
+                           VerticalOptions="Center" Margin="10,0,0,0" FontSize="16" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnHomeClicked" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <!-- Task List -->
+                <Grid HeightRequest="50" Padding="20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="list.png" HeightRequest="24" WidthRequest="24" 
+                           VerticalOptions="Center" />
+
+                    <Label Grid.Column="1" Text="Task List" TextColor="White" 
+                           VerticalOptions="Center" Margin="10,0,0,0" FontSize="16" />
+                </Grid>
+
+                <!-- My Task -->
+                <Grid HeightRequest="50" Padding="20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="task.png" HeightRequest="24" WidthRequest="24" 
+                           VerticalOptions="Center" />
+
+                    <Label Grid.Column="1" Text="My Task" TextColor="White" 
+                           VerticalOptions="Center" Margin="10,0,0,0" FontSize="16" />
+                </Grid>
+
+                <!-- Manage clinic -->
+                <Grid HeightRequest="50" Padding="20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="clinic.png" HeightRequest="24" WidthRequest="24" 
+                           VerticalOptions="Center" />
+
+                    <Label Grid.Column="1" Text="Manage clinic" TextColor="White" 
+                           VerticalOptions="Center" Margin="10,0,0,0" FontSize="16" />
+                </Grid>
+
+                <!-- Dentistry -->
+                <Grid HeightRequest="50" Padding="20,0" BackgroundColor="#2A3B75" x:Name="DentistryMenu">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="dentistry.png" HeightRequest="24" WidthRequest="24" 
+                           VerticalOptions="Center" />
+
+                    <Label Grid.Column="1" Text="Dentistry" TextColor="White" 
+                           VerticalOptions="Center" Margin="10,0,0,0" FontSize="16" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnDentistryClicked" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+
+
+
+</ContentPage>
