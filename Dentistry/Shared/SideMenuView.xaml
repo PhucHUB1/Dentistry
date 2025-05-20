@@ -16,11 +16,6 @@
                        Margin="20,0" />
             </Grid>
 
-            <!-- Thông tin người dùng -->
-            <HorizontalStackLayout Padding="20,10" HorizontalOptions="FillAndExpand">
-                <Label Text="Hello, admin" TextColor="White" FontSize="16" />
-            </HorizontalStackLayout>
-
             <!-- Menu items -->
             <VerticalStackLayout Spacing="0">
                 <!-- Home -->
@@ -84,7 +79,7 @@
                 </Grid>
 
                 <!-- Dentistry -->
-                <Grid HeightRequest="50" Padding="20,0" BackgroundColor="#2A3B75" x:Name="DentistryMenu">
+                <Grid HeightRequest="50" Padding="20,0" x:Name="DentistryMenu">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />

@@ -2,41 +2,33 @@ using Microsoft.Maui.Controls;
 
 namespace DentalClinic.MAUI.Views
 {
-    public partial class SideMenuView : ContentView
+    public partial class SideMenuView : ContentPage
     {
-        public event EventHandler HomeClicked;
-        public event EventHandler DentistryClicked;
-
         public SideMenuView()
         {
             InitializeComponent();
         }
 
-        private void OnHomeClicked(object sender, EventArgs e)
+        private void InitializeComponent()
         {
-            HomeClicked?.Invoke(this, EventArgs.Empty);
+            throw new NotImplementedException();
         }
 
-        private void OnDentistryClicked(object sender, EventArgs e)
+        protected void OnHomeClicked(object sender, EventArgs e)
         {
-            DentistryClicked?.Invoke(this, EventArgs.Empty);
+            // Handle home menu click
+            // You might want to navigate to a home page or perform other actions
+            // For example:
+            // await Shell.Current.GoToAsync("//home");
         }
 
-        public void SetActiveMenu(string menuName)
+        protected void OnDentistryClicked(object sender, EventArgs e)
         {
-            // Reset t?t c? các màu menu v? m?c ??nh
-            HomeMenu.BackgroundColor = Color.FromArgb("#172554");
-            DentistryMenu.BackgroundColor = Color.FromArgb("#172554");
-
-            switch (menuName)
-            {
-                case "Home":
-                    HomeMenu.BackgroundColor = Color.FromArgb("#2A3B75");
-                    break;
-                case "Dentistry":
-                    DentistryMenu.BackgroundColor = Color.FromArgb("#2A3B75");
-                    break;
-            }
+            // Handle dentistry menu click
+            // You might want to navigate to the dentistry page or perform other actions
+            // For example:
+            // await Shell.Current.GoToAsync("//dentistry");
         }
     }
+
 }
