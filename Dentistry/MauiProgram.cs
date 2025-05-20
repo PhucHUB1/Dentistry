@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Dentistry.Services;
+using Dentistry.Views;
+using Microsoft.Extensions.Logging;
 
 namespace Dentistry
 {
@@ -15,8 +17,21 @@ namespace Dentistry
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            // Register services
+            builder.Services.AddSingleton<PatientService>();
+
+
+            // Register views
+            builder.Services.AddTransient<PatientListPage>();
+            builder.Services.AddTransient<PatientDetailPage>();
+
+
+            // Register view models
+            builder.Services.AddTransient<ViewModels.PatientListViewModel>();
+            builder.Services.AddTransient<ViewModels.PatientDetailsViewModel>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

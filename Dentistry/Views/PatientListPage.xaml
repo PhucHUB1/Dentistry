@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:viewmodels="clr-namespace:Dentistry.ViewModels"
+             x:Class="Dentistry.Views.PatientListPage"
+             Title="PatientListPage">
+
+    <ContentPage.BindingContext>
+        <viewmodels:PatientListViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Header -->
+        <Grid Grid.Row="0" BackgroundColor="#00235B" HeightRequest="80">
+            <HorizontalStackLayout VerticalOptions="Center" Margin="20,0">
+                <Label Text="TodoListBlazorWasm" TextColor="White" FontSize="20" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,20,0">
+                <Label Text="Hello, admin" TextColor="White" FontSize="16" VerticalOptions="Center" Margin="0,0,20,0"/>
+                <Button Text="Logout" TextColor="#1E88E5" BackgroundColor="Transparent" FontSize="16" VerticalOptions="Center" Margin="0,0,20,0"/>
+                <Button Text="About" TextColor="#1E88E5" BackgroundColor="Transparent" FontSize="16" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+        </Grid>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Title and Add Button -->
+            <Grid Grid.Row="0" Margin="0,0,0,20">
+                <Label Text="Danh sách bệnh nhân" FontSize="24" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Button Text="Thêm bệnh nhân" BackgroundColor="#1E88E5" TextColor="White" HorizontalOptions="End" WidthRequest="150" HeightRequest="40"/>
+            </Grid>
+
+            <!-- Patient List -->
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Patients}">
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="Không có bệnh nhân nào" FontSize="18"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.Header>
+                    <Grid Padding="10" ColumnDefinitions="2*,1*,1*,1*,1*,2*,1*,Auto,Auto,Auto">
+                        <Label Text="Họ và tên" Grid.Column="0" FontAttributes="Bold"/>
+                        <Label Text="Giới tính" Grid.Column="1" FontAttributes="Bold"/>
+                        <Label Text="Ngày sinh" Grid.Column="2" FontAttributes="Bold"/>
+                        <Label Text="Nghề nghiệp" Grid.Column="3" FontAttributes="Bold"/>
+                        <Label Text="Số điện thoại" Grid.Column="4" FontAttributes="Bold"/>
+                        <Label Text="Địa chỉ" Grid.Column="5" FontAttributes="Bold"/>
+                        <Label Text="Ngày tạo" Grid.Column="6" FontAttributes="Bold"/>
+                    </Grid>
+                </CollectionView.Header>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" ColumnDefinitions="2*,1*,1*,1*,1*,2*,1*,Auto,Auto,Auto">
+                            <Label Text="{Binding Name}" Grid.Column="0" VerticalOptions="Center"/>
+                            <Label Text="{Binding Gender}" Grid.Column="1" VerticalOptions="Center"/>
+                            <Label Text="{Binding DateOfBirth, StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="2" VerticalOptions="Center"/>
+                            <Label Text="{Binding Occupation}" Grid.Column="3" VerticalOptions="Center"/>
+                            <Label Text="{Binding PhoneNumber}" Grid.Column="4" VerticalOptions="Center"/>
+                            <Label Text="{Binding Address}" Grid.Column="5" VerticalOptions="Center"/>
+                            <Label Text="{Binding CreatedDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" Grid.Column="6" VerticalOptions="Center"/>
+
+                            <Button Text="Chi tiết" Grid.Column="7" BackgroundColor="#1E88E5" TextColor="White" 
+                                    HeightRequest="40" WidthRequest="100" Margin="5,0"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:PatientListViewModel}}, Path=PatientTappedCommand}"
+                                    CommandParameter="{Binding Id}"/>
+
+                            <Button Text="Sửa" Grid.Column="8" BackgroundColor="#42A5F5" TextColor="White" 
+                                    HeightRequest="40" WidthRequest="100" Margin="5,0"/>
+
+                            <Button Text="Xóa" Grid.Column="9" BackgroundColor="#1E88E5" TextColor="White" 
+                                    HeightRequest="40" WidthRequest="100" Margin="5,0"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+
+</ContentPage>
